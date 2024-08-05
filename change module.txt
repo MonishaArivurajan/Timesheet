@@ -1,0 +1,46 @@
+Our project name is Time Sheet Management:
+project name :time_titans
+app name     :time_titans_app
+==================================================
+the above are backend 
+app name     :time_titans_frontend
+the above app is frontend 
+===================================================
+In database have two tables one is user and employee details
+users    : username ,email,emp id,position,joining date with time stamp,password,confirm password.
+employee details :emp id ,employee name,start time,end time,project name,comments,date,total houres worked ,lead approval ,manager approval.
+project :emp id,emp name ,project,project module,date,status.
+=======================================================
+create a login form which has employee id,password ,identify the employee id whether it is employee go to employee dashboard,if it lead go to lead dashboard ,if it is manager go to mnager dashboard.
+
+Three Dashboard:
+1.employee dashboard
+2.lead dashboard
+3.manager dashboard
+========================================================
+1.employee dashboard:
+         It has sidebar fields:
+                    Profile        :welcome message ,default graph monthwise attendance percentage.
+                    Add timesheet  :Here is update timesheet ,which has Employee ID,Employee Name,Start Time,end Time,Project Name,Project Name,Comments,add button ,these details are stored in view time sheet. 
+                    View timesheet :Employee ID,Employee Name,Start Time,End Time,Project Name,Total Hours Worked.fecth the details from the database,show only who logged in.	
+                    Calendar       :employee ID,month,year.
+                    Team table     :EmpID,Name,InTime,OutTime,Date,Project,Status ,fetch the details from the database when the lead or manager approve or disapprove the timesheet it stored in the database.
+============================================================
+2. lead dashboard :
+          It has sidebar fields:
+                     Home       :welcome message ,default graph monthwise attendance percentage.
+                     Task       :which has calendar on the top has employee id ,month,year.
+                     Team       :EmpID,Name,InTime,OutTime,Date,Project,Status ,fetch the details from the database when the lead or manager approve or disapprove the timesheet it stored in the database.
+                     Employees  :Employee list, one search bar (search the employee by their name).list employees stored in the database.when click the list of any one employee it show table format which include,
+                                Employee Name,Emp ID,Date,Start Time,End Time,Project Name,Total Worked Hours,Lead Approval(which has two button approve or disapprove ,when the lead click approve or disapprove button it can be stored in the database)
+===============================================================
+3. Manager dashboard :
+         It has sidebar fields:
+                     Home       :welcome message ,default graph monthwise attendance percentage.
+                     Task       :which has calendar on the top has employee id ,month,year.
+                     Team       :EmpID,Name,InTime,OutTime,Date,Project,Status ,fetch the details from the database when the lead or manager approve or disapprove the timesheet it stored in the database.
+                     Employees  :Employee list, one search bar (search the employee by their name).list employees stored in the database.when click the list of any one employee it show table format which include,
+                                Employee Name,Emp ID,Date,Start Time,End Time,Project Name,Total Worked Hours,lead Approval(stored in database),Manager Approval(which has two button approve or disapprove ,when the lead click approve or disapprove button it can be stored in the database)
+==================================================================
+
+
