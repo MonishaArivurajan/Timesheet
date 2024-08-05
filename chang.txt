@@ -1,0 +1,245 @@
+Time Sheet Management Documentation
+Project Overview
+Project Name: time_titans
+Backend Application: time_titans_app
+Frontend Application: time_titans_frontend
+Database Structure
+Tables:
+Users Table (users)
+
+Fields:
+username: CharField(max_length=150)
+email: EmailField(max_length=254)
+emp_id: CharField(max_length=10, unique=True)
+position: CharField(max_length=20, choices=[('Employee', 'Employee'), ('Lead', 'Lead'), ('Manager', 'Manager')])
+joining_date: DateTimeField()
+password: CharField(max_length=128)
+confirm_password: CharField(max_length=128)
+Employee Details Table (employee_details)
+
+Fields:
+emp_id: ForeignKey(User, on_delete=models.CASCADE)
+employee_name: CharField(max_length=100)
+start_time: DateTimeField()
+end_time: DateTimeField()
+project_name: CharField(max_length=100)
+comments: TextField()
+date: DateField()
+total_hours_worked: DecimalField(max_digits=5, decimal_places=2)
+lead_approval: BooleanField(default=False)
+manager_approval: BooleanField(default=False)
+Project Table (project)
+
+Fields:
+emp_id: ForeignKey(User, on_delete=models.CASCADE)
+emp_name: CharField(max_length=100)
+project: CharField(max_length=100)
+project_module: CharField(max_length=100)
+date: DateField()
+status: CharField(max_length=20)
+Authentication & Authorization
+Login Form
+Fields:
+Employee ID
+Password
+Functionality:
+Identify the emp_id to determine the user type.
+Redirect to:
+Employee Dashboard if the user is an employee.
+Lead Dashboard if the user is a lead.
+Manager Dashboard if the user is a manager.
+Dashboards
+1. Employee Dashboard
+Sidebar Fields:
+Profile:
+
+Welcome message.
+Default graph: Monthwise attendance percentage.
+Add Timesheet:
+
+Fields:
+Employee ID
+Employee Name
+Start Time
+End Time
+Project Name
+Comments
+Functionality:
+Add button to submit timesheet.
+Details stored in View Timesheet.
+View Timesheet:
+
+Fields:
+Employee ID
+Employee Name
+Start Time
+End Time
+Project Name
+Total Hours Worked
+Functionality:
+Fetch timesheet details from the database.
+Display details only for the logged-in employee.
+Calendar:
+
+Fields:
+Employee ID
+Month
+Year
+Team Table:
+
+Fields:
+EmpID
+Name
+InTime
+OutTime
+Date
+Project
+Status
+Functionality:
+Fetch details from the database.
+Store lead/manager approval/disapproval in the database.
+2. Lead Dashboard
+Sidebar Fields:
+Home:
+
+Welcome message.
+Default graph: Monthwise attendance percentage.
+Task:
+
+Fields:
+Calendar
+Employee ID
+Month
+Year
+Team:
+
+Fields:
+EmpID
+Name
+InTime
+OutTime
+Date
+Project
+Status
+Functionality:
+Fetch details from the database.
+Store lead/manager approval/disapproval in the database.
+Employees:
+
+Fields:
+Employee list.
+Search bar (search by employee name).
+Functionality:
+List employees stored in the database.
+On clicking an employee name, display a table with:
+Employee Name
+Emp ID
+Date
+Start Time
+End Time
+Project Name
+Total Worked Hours
+Lead Approval (Approve/Disapprove buttons)
+Store approval/disapproval in the database.
+3. Manager Dashboard
+Sidebar Fields:
+Home:
+
+Welcome message.
+Default graph: Monthwise attendance percentage.
+Task:
+
+Fields:
+Calendar
+Employee ID
+Month
+Year
+Team:
+
+Fields:
+EmpID
+Name
+InTime
+OutTime
+Date
+Project
+Status
+Functionality:
+Fetch details from the database.
+Store lead/manager approval/disapproval in the database.
+Employees:
+
+Fields:
+Employee list.
+Search bar (search by employee name).
+Functionality:
+List employees stored in the database.
+On clicking an employee name, display a table with:
+Employee Name
+Emp ID
+Date
+Start Time
+End Time
+Project Name
+Total Worked Hours
+Lead Approval (Approve/Disapprove buttons)
+Manager Approval (Approve/Disapprove buttons)
+Store lead/manager approval/disapproval in the database.
+API Endpoints
+Authentication:
+POST /api/login/
+Logs in the user based on emp_id and password.
+Redirects based on the user's position.
+Employee Dashboard:
+Profile:
+
+GET /api/employee/profile/
+Fetches profile information for the logged-in employee.
+Add Timesheet:
+
+POST /api/employee/add-timesheet/
+Adds a new timesheet entry for the logged-in employee.
+View Timesheet:
+
+GET /api/employee/view-timesheet/
+Retrieves timesheet details for the logged-in employee.
+Team Table:
+
+GET /api/employee/team-table/
+Retrieves team timesheet status based on lead/manager approval.
+Lead & Manager Dashboards:
+Task:
+
+GET /api/lead/task/
+GET /api/manager/task/
+Retrieves tasks based on the calendar and employee ID.
+Team:
+
+GET /api/lead/team/
+GET /api/manager/team/
+Retrieves team details, including approval status.
+Employees:
+
+GET /api/lead/employees/
+GET /api/manager/employees/
+Lists all employees and allows searching.
+Retrieves details for a specific employee.
+Deployment & Configuration
+Backend:
+Install dependencies using pip install -r requirements.txt.
+Apply migrations using python manage.py migrate.
+Run the server using python manage.py runserver.
+Frontend:
+Install dependencies using npm install.
+Start the development server using npm start.
+Testing
+Manual Testing:
+Verify the login functionality for all roles.
+Check dashboard redirection based on roles.
+Test timesheet addition, viewing, and approval workflows.
+Automated Testing:
+Implement unit tests for Django views and React components.
+Version Control
+Repository Structure:
+Backend: time_titans/
+Frontend: time_titans_frontend/
